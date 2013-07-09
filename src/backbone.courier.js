@@ -1,4 +1,12 @@
-(function( Backbone, _ ) {
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define([ 'backbone','underscore'], factory);
+    } else {
+        // Browser globals
+        factory(Backbone, _ );
+    }
+}(function( Backbone, _ ) {
 	var delegateEventSplitter = /^(\S+)\s*(.*)$/;
 	var lastPossibleViewElement = _.isFunction( $ ) ? $( "body" )[ 0 ] : null;
 
@@ -259,4 +267,4 @@
 			return matchingEntries.length ? matchingEntries[ 0 ].value : null;
 		}
 	};
-})( Backbone, _ );
+}));
